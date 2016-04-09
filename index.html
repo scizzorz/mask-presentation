@@ -41,15 +41,11 @@
 
       # I hate programming.
 
-      --
-
       ```c
       // C/C++
       if(my_pointer = NULL) { ... }
       if(5 &lt; x &lt; 10) { ... }
       ```
-
-      --
 
       ```php
       // PHP
@@ -58,15 +54,11 @@
       "TRUE" == 1; // false?
       ```
 
-      --
-
       ```java
       // Java
       BufferedReader br = new BufferedReader(new FileReader("file.txt"));
       while((line = br.readLine()) != null) { ... }
       ```
-
-      --
 
       ```py
       # Python
@@ -74,13 +66,10 @@
       elif stage == "EX": stage = "MEM"
       ```
 
-      --
-
       ```rust
       // Rust
       impl&lt;'a, T&gt; Reader&lt;'a, T&gt; where T: for&lt;'b&gt; ::traits::OwnedStruct&lt;'b&gt; { ... }
       ```
-
       ---
 
       # Mask
@@ -89,8 +78,6 @@
       * Syntax is elegant, concise, and readable
       * Things work the way you expect
       * "Batteries included"
-
-      --
 
       ```go
       fact : func int -&gt; int
@@ -103,7 +90,7 @@
       main = func
         print "5! = %d" (fact 5)
       ```
-      --
+
       ```bash
       $ maskc fact.ms
       $ ./fact
@@ -120,7 +107,6 @@
         x = 1
         y := 2.0
         ```
-      --
       * Whitespace-significant (Python)
         ```go
         if x &gt; 5
@@ -128,7 +114,6 @@
         else
             print "x is small."
         ```
-      --
       * Implicit returns (Nim)
         ```go
         add : func int int -&gt; int
@@ -141,16 +126,15 @@
       # Keywords
 
       * `defer` (Go)
-        ```go
-        read := func
-            my_file = std.io.open("file.txt")
-            defer my_file.close
-        ```
-      --
-      * Loop control: `for`, `while`, `until`, `loop`, `break if X`, `continue if Y`
-      --
-      <pre>
-      .remark-code.hljs[
+      <pre>.remark-code.hljs[
+        .remark-code-line[read := .hljs-keyword[func]]
+        .remark-code-line[&nbsp; my_file = std.io.open .hljs-string["file.txt"]]
+        .remark-code-line[&nbsp; .hljs-keyword[defer] my_file.close]
+        .remark-code-line[&nbsp; .hljs-keyword[for] line .hljs-keyword[in] my_file]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+      * Loop control: `until`, `loop`, `break if X`, `continue if Y`
+      <pre>.remark-code.hljs[
         .remark-code-line[.hljs-keyword[for] x .hljs-keyword[in] data]
         .remark-code-line[&nbsp; ...]
         .remark-code-line[.hljs-keyword[end]]
@@ -159,8 +143,7 @@
         .remark-code-line[&nbsp; ...]
         .remark-code-line[.hljs-keyword[else]]
         .remark-code-line[&nbsp; ...]
-      ]
-      </pre>
+      ]</pre>
 
       ---
 
@@ -172,7 +155,6 @@
         filter : func (func int -&gt; bool) [int] -&gt; [int]
         reduce : func (func int int -&gt; int) [int] -&gt; int
         ```
-      --
       * Closures
         ```go
         adder : func int -&gt; (func int -&gt; int)
@@ -180,16 +162,11 @@
             result = func y
               return x + y
         ```
-      --
       * Partial application
-      <pre>
-      .remark-code.hljs[
-        .remark-code-line[add_5 = .hljs-keyword[partial] add .hljs-number[5]]
-        .remark-code-line[sum = .hljs-keyword[partial] reduce add]
-      ]
-      </pre>
-
-
+      <pre>.remark-code.hljs[
+        .remark-code-line[add_5 := .hljs-keyword[partial] add .hljs-number[5]]
+        .remark-code-line[sum := .hljs-keyword[partial] reduce add]
+      ]</pre>
 
       ---
 
@@ -201,21 +178,21 @@
             end
             cons : {int, list}
         ```
-      --
       * Generics / templates (Haskell, Rust)
         ```go
         struct box &lt;T&gt;
             data : &lt;T&gt;
         ```
-      --
       * Traits instead of traditional OOP (Rust)
-      <pre>
-      .remark-code.hljs[
+      <pre>.remark-code.hljs[
         .remark-code-line[.hljs-keyword[bind] core.size .hljs-keyword[for] list]
         .remark-code-line[&nbsp; size = .hljs-keyword[func] this]
         .remark-code-line[&nbsp;   ...]
-      ]
-      </pre>
+      ]</pre>
+
+      ---
+
+      # Questions?
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
