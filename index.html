@@ -99,9 +99,9 @@
 
       ---
 
-      # Syntax
+      # Design
 
-      * Static typing, type inference (Rust, Haskell)
+      * Static typing with type inference
         ```go
         x : int
         x = 1
@@ -114,36 +114,27 @@
         else
             print "x is small."
         ```
+      * Garbage collection - no manual memory management
+      * Everything is a reference
+
+      ---
+
+      # Functions
+
+      * Definition / call
+        ```go
+        add : func int int -&gt; int
+        add = func x   y
+            return x + y
+        val := add 10 20
+        ```
       * Implicit returns (Nim)
         ```go
         add : func int int -&gt; int
         add = func x   y   -&gt; result
             result = x + y
         ```
-
-      ---
-
-      # Keywords
-
-      * `defer` (Go)
-      <pre>.remark-code.hljs[
-        .remark-code-line[read := .hljs-keyword[func]]
-        .remark-code-line[&nbsp; my_file = std.io.open .hljs-string["file.txt"]]
-        .remark-code-line[&nbsp; .hljs-keyword[defer] my_file.close]
-        .remark-code-line[&nbsp; .hljs-keyword[for] line .hljs-keyword[in] my_file]
-        .remark-code-line[&nbsp;   ...]
-      ]</pre>
-      * Loop control: `until`, `loop`, `break if X`, `continue if Y`
-      <pre>.remark-code.hljs[
-        .remark-code-line[.hljs-keyword[for] x .hljs-keyword[in] data]
-        .remark-code-line[&nbsp; ...]
-        .remark-code-line[.hljs-keyword[end]]
-        .remark-code-line[&nbsp; ...]
-        .remark-code-line[.hljs-keyword[break]]
-        .remark-code-line[&nbsp; ...]
-        .remark-code-line[.hljs-keyword[else]]
-        .remark-code-line[&nbsp; ...]
-      ]</pre>
+      * No overloading
 
       ---
 
@@ -162,10 +153,34 @@
             result = func y
               return x + y
         ```
-      * Partial application
+      * Partial application (Haskell)
       <pre>.remark-code.hljs[
         .remark-code-line[add_5 := .hljs-keyword[partial] add .hljs-number[5]]
         .remark-code-line[sum := .hljs-keyword[partial] reduce add]
+      ]</pre>
+
+      ---
+
+      # Keywords
+
+      * `defer` (Go)
+      <pre>.remark-code.hljs[
+        .remark-code-line[read := .hljs-keyword[func]]
+        .remark-code-line[&nbsp; my_file = std.io.open .hljs-string["file.txt"]]
+        .remark-code-line[&nbsp; .hljs-keyword[defer] my_file.close]
+        .remark-code-line[&nbsp; .hljs-keyword[for] line .hljs-keyword[in] my_file]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+      * Loop control: `until`, `loop`, `break if X`, `continue if Y`
+      <pre>.remark-code.hljs[
+        .remark-code-line[.hljs-keyword[for] x .hljs-keyword[in] data]
+        .remark-code-line[&nbsp; .hljs-built_in[print] x]
+        .remark-code-line[.hljs-keyword[end]]
+        .remark-code-line[&nbsp; .hljs-built_in[print] .hljs-string["the loop finished!"]]
+        .remark-code-line[.hljs-keyword[break]]
+        .remark-code-line[&nbsp; .hljs-built_in[print] .hljs-string["the loop ended early!"]]
+        .remark-code-line[.hljs-keyword[empty]]
+        .remark-code-line[&nbsp; .hljs-built_in[print] .hljs-string["the loop never ran!"]]
       ]</pre>
 
       ---
@@ -178,7 +193,7 @@
             end
             cons : {int, list}
         ```
-      * Generics / templates (Haskell, Rust)
+      * Generics / templates
         ```go
         struct box &lt;T&gt;
             data : &lt;T&gt;
