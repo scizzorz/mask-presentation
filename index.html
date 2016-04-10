@@ -207,6 +207,23 @@
 
       ---
 
+      # Operators
+
+      * No custom operators (unlike Haskell, Nim)
+      * Overload via traits (Rust)
+      <pre>.remark-code.hljs[
+        .remark-code-line[.hljs-keyword[bind] core.add .hljs-keyword[for] list]
+        .remark-code-line[&nbsp; add = .hljs-keyword[func] this other]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+      * Pipe operator (sh)
+      ```go
+      my_file := std.io.open "file.txt"
+      my_file | map to_int | filter positive | count
+      ```
+
+      ---
+
       # Questions?
 
       * Slides: [scizzorz.github.io/mask-presentation](https://scizzorz.github.io/mask-presentation)
