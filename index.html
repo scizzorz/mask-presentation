@@ -162,6 +162,67 @@
 
       ---
 
+      # Types
+
+      * Structs
+        ```go
+        struct point
+            x y : int
+        ```
+      * Variant types / enums (Haskell, Rust)
+        ```go
+        type list
+            end
+            cons : {int, list}
+        ```
+      * Generics / templates
+        ```go
+        struct box &lt;T&gt;
+            data : &lt;T&gt;
+        ```
+
+      ---
+
+      # Classes
+
+      * No classes (Rust)
+      * Structs can have methods
+      <pre>.remark-code.hljs[
+        .remark-code-line[.hljs-keyword[bind] point]
+        .remark-code-line[&nbsp; translate : .hljs-keyword[func] point .hljs-keyword[int] .hljs-keyword[int]]
+        .remark-code-line[&nbsp; translate = .hljs-keyword[func] this x y]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+      * Traits instead of traditional OOP (Rust)
+      <pre>.remark-code.hljs[
+        .remark-code-line[.hljs-keyword[trait] shape .hljs-keyword[for] &lt;&zwnj;self&gt;]
+        .remark-code-line[&nbsp; area : .hljs-keyword[func] &lt;&zwnj;self&gt; -&gt; .hljs-keyword[int]]
+        .remark-code-line[.hljs-keyword[bind] shape .hljs-keyword[for] rect]
+        .remark-code-line[&nbsp; area = .hljs-keyword[func] this]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+
+      ---
+
+      # Operators
+
+      * No custom operators (unlike Haskell, Nim)
+      * Overload via traits (Rust)
+      <pre>.remark-code.hljs[
+        .remark-code-line[.hljs-keyword[bind] core.add .hljs-keyword[for] list]
+        .remark-code-line[&nbsp; add = .hljs-keyword[func] this other]
+        .remark-code-line[&nbsp;   ...]
+      ]</pre>
+      * Pipe operator (shell)
+        ```go
+        my_file := std.io.open "file.txt"
+        x := my_file | mapper to_int | filterer positive | count
+
+        y := count ((filterer positive) ((mapper to_int) my_file))
+        ```
+
+      ---
+
       # Keywords
 
       * `defer` (Go)
@@ -186,46 +247,110 @@
 
       ---
 
-      # Types
+      # Roadmap
 
-      * Variant types / enums (Haskell, Rust)
+      * Self-hosting!
+      * Aliases / macros
+      * Standard library - I/O, collections, algorithms, math
+      * Better FFI
+      * Optimizations
+      * String formatting
         ```go
-        type list
-            end
-            cons : {int, list}
+        "{}" 5 == "5"
+        "{2.3}" 3.14159 == " 3.142"
+        "My name is {}." "John" == "My name is John."
         ```
-      * Generics / templates
-        ```go
-        struct box &lt;T&gt;
-            data : &lt;T&gt;
-        ```
-      * Traits instead of traditional OOP (Rust)
-      <pre>.remark-code.hljs[
-        .remark-code-line[.hljs-keyword[bind] core.size .hljs-keyword[for] list]
-        .remark-code-line[&nbsp; size = .hljs-keyword[func] this]
-        .remark-code-line[&nbsp;   ...]
-      ]</pre>
+
+      --
+
+      ### Considerations and concerns
+
+      * Exceptions / error handling
+      * Concurrency / threads
+      * Library distribution
+      * Readability of function arguments, lists
 
       ---
 
-      # Operators
+      # Benchmark
 
-      * No custom operators (unlike Haskell, Nim)
-      * Overload via traits (Rust)
-      <pre>.remark-code.hljs[
-        .remark-code-line[.hljs-keyword[bind] core.add .hljs-keyword[for] list]
-        .remark-code-line[&nbsp; add = .hljs-keyword[func] this other]
-        .remark-code-line[&nbsp;   ...]
-      ]</pre>
-      * Pipe operator (sh)
       ```go
-      my_file := std.io.open "file.txt"
-      my_file | map to_int | filter positive | count
+      fib : func int -&gt; int
+      fib = func n
+        if n &lt;= 1
+          return 1
+        return (fib n - 1) + (fib n - 2)
+
+      main : func
+      main = func
+        print "fib 33 = %d" (fib 33)
+      ```
+
+      --
+
+      * C: **0.02** sec
+      * Rust: **0.04** sec
+      * Python: **1.20** sec
+      * Mask: **1.30** sec
+
+      ---
+
+      # Compiler
+
+      * About 3000 lines of Python
+      * Compiles to LLVM IR
+
+      --
+
+      ```go
+      main : func
+      main = func
+        print "Hello!"
+      ```
+      --
+
+      ```py
+      Name("main"), Character(":"), Keyword("func"), Newline
+      Name("main"), Character("="), Keyword("func"), Newline
+      Indent, Keyword("print"), String("Hello!"), Newline
+      Dedent, End of File
+      ```
+
+      --
+
+      ```py
+      Program:
+        Declaration: Name("main"), FunctionType([], Void)
+        Assignment: Name("main"), Function:
+          Print: String("Hello!")
       ```
 
       ---
 
+      # Abstract Syntax Tree
+
+      * Matcher:
+        ```py
+        Int.matcher = Token(Int)
+        ```
+      * Type checker:
+        ```py
+        @Int.type_checker
+        def type_check(self, module):
+            return module.type['int']
+        ```
+      * Emitter:
+        ```py
+        @Int.emitter
+        def emit(self, module):
+            return module.constant(self.value(), self.type())
+        ```
+
+      ---
+
       # Questions?
+
+      --
 
       * Slides: [scizzorz.github.io/mask-presentation](https://scizzorz.github.io/mask-presentation)
       * Source code: [github.com/scizzorz/mask-presentation](https://github.com/scizzorz/mask-presentation)
