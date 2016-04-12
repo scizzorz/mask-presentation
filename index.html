@@ -74,10 +74,9 @@
 
       # Mask
 
-      * A Frankenstein's monster of programming languages
-      * Syntax is elegant, concise, and readable
-      * Things work the way you expect
-      * "Batteries included"
+      * An experimental programming language
+      * Readable, concise, convenient, safe
+      * Things work the way you expect - the wrong thing is hard to do
 
       ```go
       fact : func int -&gt; int
@@ -105,7 +104,8 @@
         ```go
         x : int
         x = 1
-        y := 2.0
+        y : bool = true
+        z := 2.0
         ```
       * Whitespace-significant (Python)
         ```go
@@ -114,14 +114,15 @@
         else
             print "x is small."
         ```
-      * Garbage collection - no manual memory management
-      * Everything is a reference
+      * [Garbage collected](http://hboehm.info/gc/) - no manual memory management, everything is a reference
+      * No system for access control (`private`, `public`)
+      * Identifiers are case- and underscore-insensitive (`camelCase`, `camel_case`)
 
       ---
 
       # Functions
 
-      * Definition / call
+      * Definition / call (Haskell)
         ```go
         add : func int int -&gt; int
         add = func x   y
