@@ -35,48 +35,60 @@
 
       ---
 
-      # I love programming.
+      # I love programming
+
+      * **Ubiquitous**
+        * *Everything* is controlled by it
+        * Phones, email, lights, cars, TVs, appliances...
+      * **Powerful**
+        * Maps / directions
+        * Encryption
+      * **Convenient**
+        * Automation
+        * Google Now / Siri
+        * Amazon
+      * **Mind-blowingly awesome**
+        * Google's knowledge graph!
+        * A computer just beat a human at Go!
+        * Driverless cars!
+        * [Space shuttles!](http://www.fastcompany.com/28121/they-write-right-stuff)
 
       ---
 
-      # I hate programming.
+      # I hate programming
 
       ```c
-      // C/C++
       if(my_pointer = NULL) { ... }
       if(5 &lt; x &lt; 10) { ... }
       ```
 
       ```php
-      // PHP
       TRUE == 1; // true
       "TRUE" == TRUE; // true
       "TRUE" == 1; // false?
       ```
 
       ```java
-      // Java
       BufferedReader br = new BufferedReader(new FileReader("file.txt"));
       while((line = br.readLine()) != null) { ... }
       ```
 
       ```py
-      # Python
       if stage == "F": stag = "EX"
       elif stage == "EX": stage = "MEM"
       ```
 
       ```rust
-      // Rust
       impl&lt;'a, T&gt; Reader&lt;'a, T&gt; where T: for&lt;'b&gt; ::traits::OwnedStruct&lt;'b&gt; { ... }
       ```
       ---
 
       # Mask
 
-      * An experimental programming language
+      * An experimental Frankenstein's monster of a programming language
       * Readable, concise, convenient, safe
-      * Things work the way you expect - the wrong thing is hard to do
+      * Things should work the way you expect
+      * The wrong thing should be hard to do
 
       ```go
       fact : func int -&gt; int
@@ -127,6 +139,7 @@
         add : func int int -&gt; int
         add = func x   y
             return x + y
+
         val := add 10 20
         ```
       * Implicit returns (Nim)
@@ -164,10 +177,13 @@
 
       # Types
 
-      * Structs
+      * Structs, vectors, tuples
         ```go
         struct point
             x y : int
+        my_vector : [int] = [1, 1, 2, 3, 5, 8]
+        my_tuple : {int, bool, string} = {10, true, "Hello!"}
+
         ```
       * Variant types / enums (Haskell, Rust)
         ```go
@@ -190,10 +206,10 @@
       <pre>.remark-code.hljs[
         .remark-code-line[.hljs-keyword[bind] point]
         .remark-code-line[&nbsp; translate : .hljs-keyword[func] point .hljs-keyword[int] .hljs-keyword[int]]
-        .remark-code-line[&nbsp; translate = .hljs-keyword[func] this x y]
+        .remark-code-line[&nbsp; translate = .hljs-keyword[func] this  x   y]
         .remark-code-line[&nbsp;   ...]
       ]</pre>
-      * Traits instead of traditional OOP (Rust)
+      * Traits
       <pre>.remark-code.hljs[
         .remark-code-line[.hljs-keyword[trait] shape .hljs-keyword[for] &lt;&zwnj;self&gt;]
         .remark-code-line[&nbsp; area : .hljs-keyword[func] &lt;&zwnj;self&gt; -&gt; .hljs-keyword[int]]
@@ -237,6 +253,8 @@
       <pre>.remark-code.hljs[
         .remark-code-line[.hljs-keyword[for] x .hljs-keyword[in] data]
         .remark-code-line[&nbsp; .hljs-built_in[print] x]
+        .remark-code-line[&nbsp; .hljs-built_in[continue if] x == .hljs-number[10]]
+        .remark-code-line[&nbsp; .hljs-built_in[break if] x &gt; .hljs-number[40]]
         .remark-code-line[.hljs-keyword[end]]
         .remark-code-line[&nbsp; .hljs-built_in[print] .hljs-string["the loop finished!"]]
         .remark-code-line[.hljs-keyword[break]]
@@ -291,7 +309,8 @@
       * C: **0.02** sec
       * Rust: **0.04** sec
       * Python: **1.20** sec
-      * Mask: **1.30** sec
+      * Mask: **4.80** sec
+      * Fixed a bug: **1.30** sec
 
       ---
 
@@ -352,8 +371,9 @@
 
       --
 
+      * Background: [scizzorz.github.io/resume/background.html](https://scizzorz.github.io/resume/background.html)
+      * Resume: [scizzorz.github.io/resume](https://scizzorz.github.io/resume)
       * Slides: [scizzorz.github.io/mask-presentation](https://scizzorz.github.io/mask-presentation)
-      * Source code: [github.com/scizzorz/mask-presentation](https://github.com/scizzorz/mask-presentation)
       * Mask source code not open source... yet!
 
     </textarea>
