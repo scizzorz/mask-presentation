@@ -40,15 +40,12 @@
       * **Ubiquitous**
         * *Everything* is controlled by it
         * Phones, email, lights, cars, TVs, appliances...
-      * **Powerful**
+      * **Powerful** and **convenient**
         * Maps / directions
-        * Encryption
-      * **Convenient**
         * Automation
         * Google Now / Siri
         * Amazon
       * **Mind-blowingly awesome**
-        * Google's knowledge graph!
         * A computer just beat a human at Go!
         * Driverless cars!
         * [Space shuttles!](http://www.fastcompany.com/28121/they-write-right-stuff)
@@ -67,8 +64,8 @@
       --
 
       ```py
-      if stage == "F": stag = "EX"
-      elif stage == "EX": stage = "MEM"
+      if stage == "one": stag = "two"
+      elif stage == "two": stage = "one"
       ```
 
       --
@@ -95,11 +92,6 @@
       while((line = br.readLine()) != null) { ... }
       ```
 
-      --
-
-      ```rust
-      impl&lt;'a, T&gt; Reader&lt;'a, T&gt; where T: for&lt;'b&gt; ::traits::OwnedStruct&lt;'b&gt; { ... }
-      ```
       ---
 
       # Mask
@@ -122,6 +114,8 @@
       main = func
         print "5! = %d" (fact 5)
       ```
+
+      --
 
       ```bash
       $ maskc fact.ms
@@ -331,6 +325,10 @@
       * Rust: **0.04** sec
       * Python: **1.20** sec
       * Mask: **4.80** sec
+
+      --
+
+
       * Fixed a bug: **1.30** sec
 
       ---
