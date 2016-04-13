@@ -57,6 +57,8 @@
 
       # I hate programming
 
+      --
+
       ```c
       if(my_pointer = NULL) { ... }
       if(5 &lt; x &lt; 10) { ... }
@@ -72,9 +74,9 @@
       --
 
       ```php
-      TRUE == 1; // = true
+      TRUE == 1;      // = true
       "TRUE" == TRUE; // = true
-      "TRUE" == 1; // = false?
+      "TRUE" == 1;    // = false?
       ```
 
       --
@@ -107,6 +109,8 @@
       * Things should work the way you expect
       * The wrong thing should be hard to do
 
+      --
+
       ```go
       fact : func int -&gt; int
       fact = func n
@@ -129,7 +133,7 @@
 
       # Design
 
-      * Static typing with type inference
+      * Static, strong typing with type inference
         ```go
         x : int
         x = 1
@@ -173,8 +177,8 @@
 
       * First-class
         ```go
-        map : func (func int -&gt; bool) [int] -&gt; [bool]
-        filter : func (func int -&gt; bool) [int] -&gt; [int]
+        map    : func (func int -&gt; bool)    [int] -&gt; [bool]
+        filter : func (func int -&gt; bool)    [int] -&gt; [int]
         reduce : func (func int int -&gt; int) [int] -&gt; int
         ```
       * Closures
@@ -205,8 +209,8 @@
       * Variant types / enums (Haskell, Rust)
         ```go
         type list
-            end
-            cons : {int, list}
+            empty
+            node : {int, list}
         ```
       * Generics / templates
         ```go
@@ -380,8 +384,8 @@
       * Matcher:
         ```py
         Expression.matcher = Function | Call | Literal | ...
-        Literal.matcher = Int | Float | String | Bool
-        Int.matcher = Token(Int)
+        Literal.matcher    = Int | Float | String | Bool
+        Int.matcher        = Token(Int)
         ```
       * Type checker:
         ```py
