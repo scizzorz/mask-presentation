@@ -364,6 +364,8 @@
 
       * Matcher:
         ```py
+        Expression.matcher = Function | Call | Literal | ...
+        Literal.matcher = Int | Float | String | Bool
         Int.matcher = Token(Int)
         ```
       * Type checker:
